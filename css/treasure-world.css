@@ -1,0 +1,582 @@
+/* ========================================
+   COOKIE TREASURE WORLD - DEDICATED PAGE STYLES
+   ======================================== */
+
+/* Hero Section */
+.treasure-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #005847 100%);
+    padding: 120px 0 80px;
+    color: white;
+    text-align: center;
+}
+
+.treasure-hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 40px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Recipe Grid Section */
+.recipe-grid {
+    background: white;
+    padding: 80px 0;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--text-dark);
+}
+
+.recipe-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Recipe Card Styles */
+.recipe-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+}
+
+.recipe-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.recipe-card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.card-content {
+    padding: 30px;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.card-description {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.prep-time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.difficulty {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.difficulty.easy {
+    background: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+}
+
+.difficulty.medium {
+    background: rgba(255, 152, 0, 0.1);
+    color: #FF9800;
+}
+
+.btn-explore {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-explore:hover {
+    background: #005847;
+    transform: translateY(-2px);
+}
+
+/* Color-themed hover effects */
+.card-butter:hover {
+    box-shadow: 0 20px 50px rgba(212, 165, 116, 0.3);
+}
+
+.card-chocolate:hover {
+    box-shadow: 0 20px 50px rgba(139, 69, 19, 0.3);
+}
+
+.card-snicker:hover {
+    box-shadow: 0 20px 50px rgba(210, 180, 140, 0.3);
+}
+
+.card-vanilla:hover {
+    box-shadow: 0 20px 50px rgba(245, 245, 220, 0.5);
+}
+
+.card-double-choc:hover {
+    box-shadow: 0 20px 50px rgba(60, 24, 16, 0.3);
+}
+
+/* Recipe Modal */
+.recipe-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.recipe-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.modal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-content {
+    padding: 40px;
+    max-height: calc(90vh - 120px);
+    overflow-y: auto;
+}
+
+/* Recipe Intro */
+.recipe-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.recipe-image img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.recipe-story h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.recipe-story p {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.recipe-stats {
+    display: flex;
+    gap: 30px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+}
+
+/* Interactive Timeline */
+.recipe-timeline {
+    border-top: 2px solid #f0f0f0;
+    padding-top: 40px;
+}
+
+.timeline-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.timeline-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.timeline-btn:hover {
+    background: #e9ecef;
+}
+
+.timeline-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.stage-icon {
+    font-size: 1.5rem;
+}
+
+.timeline-content {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 30px;
+    min-height: 300px;
+}
+
+.timeline-stage {
+    display: none;
+}
+
+.timeline-stage.active {
+    display: block;
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-stage h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.stage-time {
+    color: #666;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.timeline-stage h4 {
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.ingredients-list,
+.steps-list,
+.tips-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.ingredients-list li,
+.steps-list li,
+.tips-list li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Modal Actions */
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+}
+
+.btn-print,
+.btn-share {
+    padding: 12px 20px;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-print:hover,
+.btn-share:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Back to Home Section */
+.back-to-home {
+    background: white;
+    padding: 60px 0;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.back-content h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+}
+
+.back-content p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+.btn-back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--primary-color);
+    color: white;
+    padding: 18px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-back-home:hover {
+    background: #005847;
+    transform: translateY(-2px);
+    color: white;
+}
+
+.home-arrow {
+    transition: transform 0.3s ease;
+}
+
+.btn-back-home:hover .home-arrow {
+    transform: translateX(-5px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .treasure-hero {
+        padding: 100px 0 60px;
+    }
+    
+    .treasure-hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .recipe-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .recipe-intro {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .timeline-nav {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .timeline-btn {
+        flex: 1;
+        min-width: 100px;
+        padding: 12px 15px;
+    }
+    
+    .modal-container {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+}
+
+/* Tablet and Desktop - Apply 85% max-width */
+@media (min-width: 769px) {
+    .treasure-hero,
+    .recipe-grid,
+    .back-to-home {
+        max-width: 85%;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+}

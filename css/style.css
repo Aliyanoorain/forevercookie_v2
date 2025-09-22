@@ -1234,7 +1234,8 @@ a:hover {
     .hero,
     .about-section,
     .products-section,
-    .process-story {
+    .process-story,
+    .treasure-vault-preview {
         max-width: 85%;
         margin: 0 auto;
         margin-bottom: 10px;
@@ -1242,6 +1243,224 @@ a:hover {
     
     .footer {
         max-width: 85%;
+        margin: 0 auto;
+    }
+}
+
+/* ========================================
+   COOKIE TREASURE VAULT SECTION
+   ======================================== */
+
+.treasure-vault-preview {
+    background: white;
+    padding: 60px 0;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
+.treasure-vault-preview .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.treasure-vault-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.treasure-vault-text h2 {
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--primary-color), #D4A574);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.treasure-vault-text p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.treasure-features {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.treasure-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.feature-icon {
+    font-size: 20px;
+    width: 24px;
+}
+
+.btn-treasure {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--primary-color), #005847);
+    color: white;
+    padding: 18px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 109, 91, 0.2);
+}
+
+.btn-treasure:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 109, 91, 0.3);
+    background: linear-gradient(135deg, #005847, var(--primary-color));
+    color: white;
+}
+
+.treasure-arrow {
+    transition: transform 0.3s ease;
+}
+
+.btn-treasure:hover .treasure-arrow {
+    transform: translateX(5px);
+}
+
+.treasure-vault-preview-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.preview-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.preview-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.preview-card:hover .card-image img {
+    transform: scale(1.1);
+}
+
+.preview-card h4 {
+    padding: 15px 15px 5px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.preview-card p {
+    padding: 0 15px 15px;
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+/* Color-themed hover effects inspired by Crumbl */
+.card-butter:hover {
+    box-shadow: 0 8px 30px rgba(212, 165, 116, 0.3);
+}
+
+.card-butter:hover .card-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(212, 165, 116, 0.2), transparent);
+    z-index: 1;
+}
+
+.card-chocolate:hover {
+    box-shadow: 0 8px 30px rgba(139, 69, 19, 0.3);
+}
+
+.card-chocolate:hover .card-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(139, 69, 19, 0.2), transparent);
+    z-index: 1;
+}
+
+.card-snicker:hover {
+    box-shadow: 0 8px 30px rgba(210, 180, 140, 0.3);
+}
+
+.card-snicker:hover .card-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(210, 180, 140, 0.2), transparent);
+    z-index: 1;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .treasure-vault-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .treasure-vault-preview-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .treasure-vault-text h2 {
+        font-size: 2rem;
+    }
+    
+    .treasure-features {
+        align-items: center;
+    }
+    
+    .preview-card {
+        max-width: 300px;
         margin: 0 auto;
     }
 }
