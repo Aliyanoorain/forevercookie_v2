@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla Sugar Cookies Recipe - Forever Cookie</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 1.5cm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+            padding: 20px;
+        }
+
+        .pdf-container {
+            max-width: 21cm;
+            margin: 0 auto;
+        }
+
+        /* Header with Branding */
+        .pdf-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #006D5B;
+            margin-bottom: 30px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+        }
+
+        .brand-text h1 {
+            font-size: 24px;
+            color: #006D5B;
+            font-weight: bold;
+        }
+
+        .brand-text p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .recipe-title {
+            text-align: right;
+        }
+
+        .recipe-title h2 {
+            font-size: 28px;
+            color: #006D5B;
+            margin-bottom: 5px;
+        }
+
+        .recipe-meta {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Recipe Intro Section */
+        .recipe-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .recipe-image {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipe-story h3 {
+            color: #006D5B;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .recipe-story p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* Steps Section */
+        .steps-container {
+            margin-top: 30px;
+        }
+
+        .step-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #006D5B;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .step-box h3 {
+            color: #006D5B;
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-icon {
+            font-size: 24px;
+        }
+
+        .step-time {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .step-box h4 {
+            font-size: 16px;
+            color: #333;
+            margin: 15px 0 10px 0;
+        }
+
+        .step-box ul,
+        .step-box ol {
+            padding-left: 25px;
+            margin: 10px 0;
+        }
+
+        .step-box li {
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        /* Arrow Connection */
+        .arrow-down {
+            text-align: center;
+            color: #006D5B;
+            font-size: 32px;
+            font-weight: bold;
+            margin: 15px 0;
+            padding: 10px 0;
+        }
+
+        /* Footer */
+        .pdf-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #006D5B;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .pdf-footer strong {
+            color: #006D5B;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                padding: 0;
+            }
+
+            .step-box {
+                page-break-inside: avoid;
+            }
+
+            .pdf-header {
+                page-break-after: avoid;
+            }
+
+            .recipe-intro {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="pdf-container">
+        <!-- Header with Branding -->
+        <div class="pdf-header">
+            <div class="logo-section">
+                <img src="img/forever_logo_v2.png" alt="Forever Cookie Logo" class="logo">
+                <div class="brand-text">
+                    <h1>Forever Cookie</h1>
+                    <p>Premium Recipe Collection</p>
+                </div>
+            </div>
+            <div class="recipe-title">
+                <h2>Vanilla Sugar Cookies</h2>
+                <p class="recipe-meta">⏱️ 35 minutes | 📊 Easy</p>
+            </div>
+        </div>
+
+        <!-- Recipe Intro -->
+        <div class="recipe-intro">
+            <div>
+                <img src="img/recipe-vanilla-sugar.jpg" alt="Vanilla Sugar Cookies" class="recipe-image">
+            </div>
+            <div class="recipe-story">
+                <h3>The Story</h3>
+                <p>Pure elegance in every bite. These vanilla sugar cookies showcase the beauty of simplicity - made with premium Madagascar vanilla and fine sugar crystals that sparkle like tiny diamonds on each perfectly golden cookie.</p>
+            </div>
+        </div>
+
+        <!-- Steps with Arrows -->
+        <div class="steps-container">
+            <!-- Step 1 -->
+            <div class="step-box">
+                <h3><span class="step-icon">🥄</span> Stage 1: Preparation</h3>
+                <p class="step-time">⏱️ 5 minutes</p>
+                <h4>Gather Your Treasures:</h4>
+                <ul>
+                    <li>2½ cups all-purpose flour</li>
+                    <li>1 cup unsalted butter, softened</li>
+                    <li>1 cup granulated sugar</li>
+                    <li>1 large egg</li>
+                    <li>2 tsp pure vanilla extract</li>
+                    <li>1 tsp baking powder</li>
+                    <li>½ tsp salt</li>
+                    <li>Coarse sugar for sprinkling (optional)</li>
+                </ul>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <!-- Step 2 -->
+            <div class="step-box">
+                <h3><span class="step-icon">🥣</span> Stage 2: Dough Creation</h3>
+                <p class="step-time">⏱️ 10 minutes + 1 hour chill</p>
+                <h4>The Magic Begins:</h4>
+                <ol>
+                    <li>Cream butter and sugar until light and fluffy (3-4 minutes)</li>
+                    <li>Beat in egg and vanilla extract</li>
+                    <li>Whisk together flour, baking powder, and salt</li>
+                    <li>Gradually mix dry ingredients into wet mixture</li>
+                    <li>Divide dough in half, wrap in plastic, chill for 1 hour</li>
+                </ol>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <!-- Step 3 -->
+            <div class="step-box">
+                <h3><span class="step-icon">🔥</span> Stage 3: Baking</h3>
+                <p class="step-time">⏱️ 15 minutes prep + 10 minutes bake</p>
+                <h4>The Transformation:</h4>
+                <ol>
+                    <li>Preheat oven to 350°F (175°C)</li>
+                    <li>Roll dough to ¼ inch thickness on floured surface</li>
+                    <li>Cut with cookie cutters into desired shapes</li>
+                    <li>Place on lined baking sheets, sprinkle with coarse sugar</li>
+                    <li>Bake 8-10 minutes until edges are barely golden</li>
+                </ol>
+            </div>
+
+            <div class="arrow-down">↓</div>
+
+            <!-- Step 4 -->
+            <div class="step-box">
+                <h3><span class="step-icon">😋</span> Stage 4: Enjoying</h3>
+                <h4>The Perfect Moment:</h4>
+                <ul>
+                    <li>Cool completely before decorating or storing</li>
+                    <li>Perfect canvas for royal icing decorations</li>
+                    <li>Store in airtight container for up to 1 week</li>
+                    <li>Pro tip: Keep dough chilled while working for clean-cut edges</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="pdf-footer">
+            <p><strong>Forever Cookie</strong> | www.forevercookie.com | @forevercookie.com_</p>
+            <p>© 2025 Forever Cookie. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

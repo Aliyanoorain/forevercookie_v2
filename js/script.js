@@ -194,44 +194,7 @@ class ForeverCookie {
 
     // Form Enhancements
     setupFormEnhancements() {
-        const forms = document.querySelectorAll('form');
-        
-        forms.forEach(form => {
-            // Add loading state on submit
-            form.addEventListener('submit', (e) => {
-                const submitBtn = form.querySelector('button[type="submit"]');
-                if (submitBtn) {
-                    const originalText = submitBtn.textContent;
-                    submitBtn.textContent = 'Sending...';
-                    submitBtn.disabled = true;
-                    
-                    // Re-enable after a delay (for UX, since form submits to external service)
-                    setTimeout(() => {
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                    }, 3000);
-                }
-            });
-
-            // Input focus effects
-            const inputs = form.querySelectorAll('input');
-            inputs.forEach(input => {
-                // Add focus class to parent form-group
-                input.addEventListener('focus', () => {
-                    const formGroup = input.closest('.form-group');
-                    if (formGroup) {
-                        formGroup.classList.add('focused');
-                    }
-                });
-
-                input.addEventListener('blur', () => {
-                    const formGroup = input.closest('.form-group');
-                    if (formGroup) {
-                        formGroup.classList.remove('focused');
-                    }
-                });
-            });
-        });
+        // Removed: Modal now uses simple Instagram link instead of form
     }
 
     // Scroll Effects

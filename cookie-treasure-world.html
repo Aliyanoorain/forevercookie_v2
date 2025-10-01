@@ -75,7 +75,7 @@
     <nav class="navbar">
         <div class="container">
             <a href="/" class="navbar-brand">
-                <img src="img/forever-cookie-logo.jpg" alt="Forever Cookie Logo">
+                <img src="img/forever_logo_v2.png" alt="Forever Cookie Logo">
                 <span class="brand-name">Forever</span>
             </a>
             <button class="pre-order-nav-btn" id="preorder-btn">
@@ -107,7 +107,30 @@
             </div>
         </div>
     </section>
-
+    
+    <!-- Pre-Order Modal - Simplified Instagram Focus -->
+    <div class="modal-overlay" id="preorder-modal">
+        <div class="modal-background"></div>
+        <div class="modal-container">
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close">&times;</button>
+                <div class="modal-icon">
+                    <img src="img/forever_magical.png" alt="Forever Cookie">
+                </div>
+                <h2>Order Forever Cookies</h2>
+                <p class="modal-subtitle">Ready to order our delicious premium butter cookies?</p>
+                <p class="modal-description">Message us on Instagram for quick orders!</p>
+                
+                <a href="https://instagram.com/forevercookie.com_/" target="_blank" class="btn-instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Order on Instagram</span>
+                </a>
+                
+                <p class="modal-note">We'll respond within minutes during business hours!</p>
+            </div>
+        </div>
+    </div>
+    
     <!-- Recipe Cards Grid -->
     <section class="recipe-grid">
         <div class="container">
@@ -212,97 +235,100 @@
         </div>
     </section>
 
+
     <!-- Recipe Detail Modal -->
     <div class="recipe-modal" id="recipe-modal">
         <div class="modal-background"></div>
         <div class="modal-container">
             <div class="modal-header">
                 <h2 id="modal-recipe-title">Premium Butter Cookies</h2>
-                <button class="modal-close" id="modal-close">&times;</button>
+                <button class="modal-close" id="recipe-modal-close">&times;</button>
             </div>
             <div class="modal-content">
                 <div class="recipe-intro">
-                    <div class="recipe-image">
-                        <img id="modal-recipe-image" src="img/recipe-butter-cookies.jpg" alt="Recipe Image">
-                    </div>
-                    <div class="recipe-story">
-                        <h3>The Story</h3>
-                        <p id="modal-recipe-story">The crown jewel of Forever Cookie - our signature Premium Butter Cookies that started it all.</p>
-                        <div class="recipe-stats">
-                            <div class="stat-item">
-                                <i class="far fa-clock"></i>
-                                <span id="modal-prep-time">30 minutes</span>
+                    <div class="recipe-intro-left">
+                        <div class="recipe-image">
+                            <img id="modal-recipe-image" src="img/recipe-butter-cookies.jpg" alt="Recipe Image">
+                        </div>
+                        <div class="recipe-story">
+                            <h3>The Story</h3>
+                            <p id="modal-recipe-story">The crown jewel of Forever Cookie - our signature Premium Butter Cookies that started it all.</p>
+                            <div class="recipe-stats">
+                                <div class="stat-item">
+                                    <i class="far fa-clock"></i>
+                                    <span id="modal-prep-time">30 minutes</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-signal"></i>
+                                    <span id="modal-difficulty">Easy</span>
+                                </div>
                             </div>
-                            <div class="stat-item">
-                                <i class="fas fa-signal"></i>
-                                <span id="modal-difficulty">Easy</span>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Timeline -->
+                    <div class="recipe-timeline">
+                        <div class="timeline-nav">
+                            <button class="timeline-btn active" data-stage="1">
+                                <span class="stage-icon">🥄</span>
+                                <span>Preparation</span>
+                            </button>
+                            <button class="timeline-btn" data-stage="2">
+                                <span class="stage-icon">🥣</span>
+                                <span>Dough Creation</span>
+                            </button>
+                            <button class="timeline-btn" data-stage="3">
+                                <span class="stage-icon">🔥</span>
+                                <span>Baking</span>
+                            </button>
+                            <button class="timeline-btn" data-stage="4">
+                                <span class="stage-icon">😋</span>
+                                <span>Enjoying</span>
+                            </button>
+                        </div>
+
+                        <div class="timeline-content">
+                            <div class="timeline-stage active" id="stage-1">
+                                <h3>Stage 1: Preparation</h3>
+                                <p class="stage-time">⏱️ 5 minutes</p>
+                                <h4>Gather Your Treasures:</h4>
+                                <ul class="ingredients-list" id="ingredients-list">
+                                    <!-- Ingredients will be populated by JavaScript -->
+                                </ul>
                             </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Interactive Timeline -->
-                <div class="recipe-timeline">
-                    <div class="timeline-nav">
-                        <button class="timeline-btn active" data-stage="1">
-                            <span class="stage-icon">🥄</span>
-                            <span>Preparation</span>
-                        </button>
-                        <button class="timeline-btn" data-stage="2">
-                            <span class="stage-icon">🥣</span>
-                            <span>Dough Creation</span>
-                        </button>
-                        <button class="timeline-btn" data-stage="3">
-                            <span class="stage-icon">🔥</span>
-                            <span>Baking</span>
-                        </button>
-                        <button class="timeline-btn" data-stage="4">
-                            <span class="stage-icon">😋</span>
-                            <span>Enjoying</span>
-                        </button>
-                    </div>
+                            <div class="timeline-stage" id="stage-2">
+                                <h3>Stage 2: Dough Creation</h3>
+                                <p class="stage-time">⏱️ 10 minutes</p>
+                                <h4>The Magic Begins:</h4>
+                                <ol class="steps-list" id="dough-steps">
+                                    <!-- Steps will be populated by JavaScript -->
+                                </ol>
+                            </div>
 
-                    <div class="timeline-content">
-                        <div class="timeline-stage active" id="stage-1">
-                            <h3>Stage 1: Preparation</h3>
-                            <p class="stage-time">⏱️ 5 minutes</p>
-                            <h4>Gather Your Treasures:</h4>
-                            <ul class="ingredients-list" id="ingredients-list">
-                                <!-- Ingredients will be populated by JavaScript -->
-                            </ul>
-                        </div>
+                            <div class="timeline-stage" id="stage-3">
+                                <h3>Stage 3: Baking</h3>
+                                <p class="stage-time">⏱️ 15 minutes prep + 12 minutes bake</p>
+                                <h4>The Transformation:</h4>
+                                <ol class="steps-list" id="baking-steps">
+                                    <!-- Steps will be populated by JavaScript -->
+                                </ol>
+                            </div>
 
-                        <div class="timeline-stage" id="stage-2">
-                            <h3>Stage 2: Dough Creation</h3>
-                            <p class="stage-time">⏱️ 10 minutes</p>
-                            <h4>The Magic Begins:</h4>
-                            <ol class="steps-list" id="dough-steps">
-                                <!-- Steps will be populated by JavaScript -->
-                            </ol>
-                        </div>
-
-                        <div class="timeline-stage" id="stage-3">
-                            <h3>Stage 3: Baking</h3>
-                            <p class="stage-time">⏱️ 15 minutes prep + 12 minutes bake</p>
-                            <h4>The Transformation:</h4>
-                            <ol class="steps-list" id="baking-steps">
-                                <!-- Steps will be populated by JavaScript -->
-                            </ol>
-                        </div>
-
-                        <div class="timeline-stage" id="stage-4">
-                            <h3>Stage 4: Enjoying</h3>
-                            <h4>The Perfect Moment:</h4>
-                            <ul class="tips-list" id="enjoying-tips">
-                                <!-- Tips will be populated by JavaScript -->
-                            </ul>
+                            <div class="timeline-stage" id="stage-4">
+                                <h3>Stage 4: Enjoying</h3>
+                                <h4>The Perfect Moment:</h4>
+                                <ul class="tips-list" id="enjoying-tips">
+                                    <!-- Tips will be populated by JavaScript -->
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="modal-actions">
-                    <button class="btn-print" onclick="window.print()">
-                        <i class="fas fa-print"></i> Print Recipe
+                    <button class="btn-download" onclick="downloadRecipe()">
+                        <i class="fas fa-download"></i> Download Recipe
                     </button>
                     <button class="btn-share" onclick="shareRecipe()">
                         <i class="fas fa-share"></i> Share Recipe
@@ -325,6 +351,64 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="img/forever_logo_v2.png" alt="Forever Cookie" class="footer-logo-img">
+                        <h4>Forever</h4>
+                    </div>
+                    <p>We strive to create a culture of warmth, kindness, and inclusivity, where everyone is welcome and celebrated. Through our Premium Butter cookies and our commitment to our customers, community, we aim to create memories that do last forever.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/forevercookie.com_/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Open Hours</h4>
+                    <div class="hours-list">
+                        <div class="hour-item">
+                            <span>Monday</span>
+                            <span>9:00 - 6:00</span>
+                        </div>
+                        <div class="hour-item">
+                            <span>Tuesday</span>
+                            <span>9:00 - 6:00</span>
+                        </div>
+                        <div class="hour-item">
+                            <span>Wednesday</span>
+                            <span>9:00 - 6:00</span>
+                        </div>
+                        <div class="hour-item">
+                            <span>Thursday</span>
+                            <span>9:00 - 6:00</span>
+                        </div>
+                        <div class="hour-item">
+                            <span>Friday</span>
+                            <span>9:00 - 6:00</span>
+                        </div>
+                        <div class="hour-item">
+                            <span>Saturday</span>
+                            <span>9:00 - 6:00</span>
+                        </div>
+                        <div class="hour-item">
+                            <span>Sunday</span>
+                            <span>Closed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span>. All Right Reserved. Design by Forever Cookie</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- JavaScript -->
     <script src="js/script.js"></script>

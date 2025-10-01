@@ -14,6 +14,7 @@ class TreasureWorld {
         this.setupEventListeners();
         this.setupModalInteractions();
         this.setupTimelineNavigation();
+        this.checkURLForRecipe(); // Check if URL has recipe parameter
     }
 
     setupEventListeners() {
@@ -58,12 +59,16 @@ class TreasureWorld {
 
     setupModalInteractions() {
         const modal = document.getElementById('recipe-modal');
-        const closeBtn = document.getElementById('modal-close');
+        const closeBtn = document.getElementById('recipe-modal-close');
         const modalBackground = modal.querySelector('.modal-background');
 
         // Close modal
-        closeBtn.addEventListener('click', () => this.closeRecipeModal());
-        modalBackground.addEventListener('click', () => this.closeRecipeModal());
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => this.closeRecipeModal());
+        }
+        if (modalBackground) {
+            modalBackground.addEventListener('click', () => this.closeRecipeModal());
+        }
         
         // Close with escape key
         document.addEventListener('keydown', (e) => {
@@ -95,6 +100,9 @@ class TreasureWorld {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
         
+        // Update URL with recipe parameter
+        this.updateURLWithRecipe(recipeType);
+        
         // Reset to first timeline stage
         this.switchTimelineStage('1');
     }
@@ -104,6 +112,9 @@ class TreasureWorld {
         modal.classList.remove('active');
         document.body.style.overflow = '';
         this.currentRecipe = null;
+        
+        // Clear recipe from URL
+        this.clearRecipeFromURL();
     }
 
     populateModalContent(recipe) {
@@ -176,6 +187,32 @@ class TreasureWorld {
         return "#" + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 + 
                       (B < 255 ? B < 1 ? 0 : B : 255) * 0x100 + 
                       (G < 255 ? G < 1 ? 0 : G : 255)).toString(16).slice(1);
+    }
+
+    // Check URL for recipe parameter and auto-open modal
+    checkURLForRecipe() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const recipeId = urlParams.get('recipe');
+        if (recipeId && this.recipeData[recipeId]) {
+            // Small delay to ensure DOM is ready
+            setTimeout(() => {
+                this.openRecipeModal(recipeId);
+            }, 300);
+        }
+    }
+
+    // Update URL when recipe opens
+    updateURLWithRecipe(recipeType) {
+        const url = new URL(window.location);
+        url.searchParams.set('recipe', recipeType);
+        window.history.pushState({}, '', url);
+    }
+
+    // Clear recipe from URL when closing
+    clearRecipeFromURL() {
+        const url = new URL(window.location);
+        url.searchParams.delete('recipe');
+        window.history.pushState({}, '', url);
     }
 
     initializeRecipeData() {
@@ -374,18 +411,81 @@ class TreasureWorld {
 
 // Share Recipe Function
 function shareRecipe() {
+    // Get current recipe from TreasureWorld instance
+    const treasureWorld = window.treasureWorldInstance;
+    const currentRecipe = treasureWorld ? treasureWorld.currentRecipe : null;
+    
+    // Build URL with recipe parameter
+    const baseUrl = window.location.origin + window.location.pathname;
+    const shareUrl = currentRecipe ? `${baseUrl}?recipe=${currentRecipe}` : baseUrl;
+    const recipeTitle = currentRecipe && treasureWorld.recipeData[currentRecipe] 
+        ? treasureWorld.recipeData[currentRecipe].title 
+        : 'Cookie Recipe';
+    
     if (navigator.share) {
         navigator.share({
-            title: 'Cookie Recipe from Forever Cookie',
-            text: 'Check out this amazing cookie recipe!',
-            url: window.location.href
+            title: `${recipeTitle} - Forever Cookie`,
+            text: `Check out this amazing ${recipeTitle} recipe from Forever Cookie!`,
+            url: shareUrl
+        }).catch(() => {
+            // Fallback if sharing fails
+            copyToClipboard(shareUrl);
         });
     } else {
         // Fallback: Copy URL to clipboard
-        navigator.clipboard.writeText(window.location.href).then(() => {
-            alert('Recipe link copied to clipboard!');
-        });
+        copyToClipboard(shareUrl);
     }
+}
+
+// Download Recipe Function - Opens dedicated PDF page for the current recipe
+function downloadRecipe() {
+    const treasureWorld = window.treasureWorldInstance;
+    if (!treasureWorld || !treasureWorld.currentRecipe) {
+        console.error('No recipe currently open');
+        return;
+    }
+
+    // Map recipe types to their PDF page filenames
+    const pdfPages = {
+        'butter': 'recipe-pdf-butter.html',
+        'chocolate': 'recipe-pdf-chocolate.html',
+        'snicker': 'recipe-pdf-snicker.html',
+        'vanilla': 'recipe-pdf-vanilla.html',
+        'double-choc': 'recipe-pdf-double-choc.html'
+    };
+
+    const pdfPage = pdfPages[treasureWorld.currentRecipe];
+    
+    if (pdfPage) {
+        // Open the PDF page in a new window
+        const pdfWindow = window.open(pdfPage, '_blank');
+        
+        // After page loads, trigger print dialog automatically
+        if (pdfWindow) {
+            pdfWindow.onload = function() {
+                setTimeout(() => {
+                    pdfWindow.print();
+                }, 500); // Small delay to ensure page is fully rendered
+            };
+        }
+    } else {
+        console.error('PDF page not found for recipe:', treasureWorld.currentRecipe);
+    }
+}
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Recipe link copied to clipboard! Share it with your friends.');
+    }).catch(() => {
+        // Manual fallback
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Recipe link copied to clipboard!');
+    });
 }
 
 // Smooth scroll for internal links
@@ -407,7 +507,10 @@ function smoothScroll() {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new TreasureWorld();
+    const treasureWorld = new TreasureWorld();
+    // Save instance globally for shareRecipe function
+    window.treasureWorldInstance = treasureWorld;
+    
     smoothScroll();
     
     // Add some entrance animations
