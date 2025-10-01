@@ -437,7 +437,7 @@ function shareRecipe() {
     }
 }
 
-// Download Recipe Function - Opens dedicated PDF page for the current recipe
+// Download Recipe Function - Directly downloads pre-made PDF file
 function downloadRecipe() {
     const treasureWorld = window.treasureWorldInstance;
     if (!treasureWorld || !treasureWorld.currentRecipe) {
@@ -445,31 +445,30 @@ function downloadRecipe() {
         return;
     }
 
-    // Map recipe types to their PDF page filenames
-    const pdfPages = {
-        'butter': 'recipe-pdf-butter.html',
-        'chocolate': 'recipe-pdf-chocolate.html',
-        'snicker': 'recipe-pdf-snicker.html',
-        'vanilla': 'recipe-pdf-vanilla.html',
-        'double-choc': 'recipe-pdf-double-choc.html'
+    // Map recipe types to their PDF filenames
+    const pdfFiles = {
+        'butter': 'Premium Butter Cookies Recipe - Forever Cookie.pdf',
+        'chocolate': 'Classic Chocolate Chip Cookies Recipe - Forever Cookie.pdf',
+        'snicker': 'Cinnamon Snickerdoodles Recipe - Forever Cookie.pdf',
+        'vanilla': 'Vanilla Sugar Cookies Recipe - Forever Cookie.pdf',
+        'double-choc': 'Double Chocolate Delight Recipe - Forever Cookie.pdf'
     };
 
-    const pdfPage = pdfPages[treasureWorld.currentRecipe];
+    const pdfFile = pdfFiles[treasureWorld.currentRecipe];
     
-    if (pdfPage) {
-        // Open the PDF page in a new window
-        const pdfWindow = window.open(pdfPage, '_blank');
+    if (pdfFile) {
+        // Create a temporary link element to trigger download
+        const link = document.createElement('a');
+        link.href = `recipe-pdfs/${pdfFile}`;
+        link.download = pdfFile; // Suggest filename for download
+        link.style.display = 'none';
         
-        // After page loads, trigger print dialog automatically
-        if (pdfWindow) {
-            pdfWindow.onload = function() {
-                setTimeout(() => {
-                    pdfWindow.print();
-                }, 500); // Small delay to ensure page is fully rendered
-            };
-        }
+        // Add to document, click, and remove
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     } else {
-        console.error('PDF page not found for recipe:', treasureWorld.currentRecipe);
+        console.error('PDF file not found for recipe:', treasureWorld.currentRecipe);
     }
 }
 

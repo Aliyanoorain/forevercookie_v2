@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vanilla Sugar Cookies Recipe - Forever Cookie</title>
+    <title>Classic Chocolate Chip Cookies Recipe - Forever Cookie</title>
     <style>
         @page {
             size: A4 portrait;
             margin: 1.5cm;
+            /* Remove browser headers/footers that show URL */
+            @top-left { content: none; }
+            @top-center { content: none; }
+            @top-right { content: none; }
+            @bottom-left { content: none; }
+            @bottom-center { content: none; }
+            @bottom-right { content: none; }
         }
 
         * {
@@ -86,10 +93,24 @@
             border-bottom: 2px solid #f0f0f0;
         }
 
-        .recipe-image {
+        .recipe-image-container {
+            position: relative;
             width: 100%;
+            padding-top: 100%; /* 1:1 aspect ratio - perfect square */
+            overflow: hidden;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background: #f5f5f5;
+        }
+
+        .recipe-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .recipe-story h3 {
@@ -212,19 +233,19 @@
                 </div>
             </div>
             <div class="recipe-title">
-                <h2>Vanilla Sugar Cookies</h2>
+                <h2>Classic Chocolate Chip</h2>
                 <p class="recipe-meta">⏱️ 35 minutes | 📊 Easy</p>
             </div>
         </div>
 
         <!-- Recipe Intro -->
         <div class="recipe-intro">
-            <div>
-                <img src="img/recipe-vanilla-sugar.jpg" alt="Vanilla Sugar Cookies" class="recipe-image">
+            <div class="recipe-image-container">
+                <img src="img/recipe-chocolate-chip.jpg" alt="Classic Chocolate Chip Cookies" class="recipe-image">
             </div>
             <div class="recipe-story">
                 <h3>The Story</h3>
-                <p>Pure elegance in every bite. These vanilla sugar cookies showcase the beauty of simplicity - made with premium Madagascar vanilla and fine sugar crystals that sparkle like tiny diamonds on each perfectly golden cookie.</p>
+                <p>A timeless classic that never goes out of style. Our chocolate chip cookies feature generous chunks of premium dark and milk chocolate, creating the perfect balance of gooey centers and crispy edges that made us famous.</p>
             </div>
         </div>
 
@@ -236,14 +257,15 @@
                 <p class="step-time">⏱️ 5 minutes</p>
                 <h4>Gather Your Treasures:</h4>
                 <ul>
-                    <li>2½ cups all-purpose flour</li>
+                    <li>2¼ cups all-purpose flour</li>
                     <li>1 cup unsalted butter, softened</li>
-                    <li>1 cup granulated sugar</li>
-                    <li>1 large egg</li>
+                    <li>¾ cup packed brown sugar</li>
+                    <li>¼ cup granulated sugar</li>
+                    <li>2 large eggs</li>
                     <li>2 tsp pure vanilla extract</li>
-                    <li>1 tsp baking powder</li>
-                    <li>½ tsp salt</li>
-                    <li>Coarse sugar for sprinkling (optional)</li>
+                    <li>1 tsp baking soda</li>
+                    <li>1 tsp fine sea salt</li>
+                    <li>2 cups premium chocolate chips (mix of dark and milk)</li>
                 </ul>
             </div>
 
@@ -252,14 +274,14 @@
             <!-- Step 2 -->
             <div class="step-box">
                 <h3><span class="step-icon">🥣</span> Stage 2: Dough Creation</h3>
-                <p class="step-time">⏱️ 10 minutes + 1 hour chill</p>
+                <p class="step-time">⏱️ 10 minutes</p>
                 <h4>The Magic Begins:</h4>
                 <ol>
-                    <li>Cream butter and sugar until light and fluffy (3-4 minutes)</li>
-                    <li>Beat in egg and vanilla extract</li>
-                    <li>Whisk together flour, baking powder, and salt</li>
+                    <li>Cream butter with both sugars until fluffy (4-5 minutes)</li>
+                    <li>Beat in eggs one at a time, then add vanilla</li>
+                    <li>Combine flour, baking soda, and salt in separate bowl</li>
                     <li>Gradually mix dry ingredients into wet mixture</li>
-                    <li>Divide dough in half, wrap in plastic, chill for 1 hour</li>
+                    <li>Fold in chocolate chips gently</li>
                 </ol>
             </div>
 
@@ -268,14 +290,14 @@
             <!-- Step 3 -->
             <div class="step-box">
                 <h3><span class="step-icon">🔥</span> Stage 3: Baking</h3>
-                <p class="step-time">⏱️ 15 minutes prep + 10 minutes bake</p>
+                <p class="step-time">⏱️ 15 minutes prep + 12 minutes bake</p>
                 <h4>The Transformation:</h4>
                 <ol>
-                    <li>Preheat oven to 350°F (175°C)</li>
-                    <li>Roll dough to ¼ inch thickness on floured surface</li>
-                    <li>Cut with cookie cutters into desired shapes</li>
-                    <li>Place on lined baking sheets, sprinkle with coarse sugar</li>
-                    <li>Bake 8-10 minutes until edges are barely golden</li>
+                    <li>Preheat oven to 375°F (190°C)</li>
+                    <li>Line baking sheets with parchment paper</li>
+                    <li>Drop rounded tablespoons of dough 2 inches apart</li>
+                    <li>Bake for 10-12 minutes until golden brown edges</li>
+                    <li>Cool on baking sheet for 5 minutes before transferring</li>
                 </ol>
             </div>
 
@@ -286,10 +308,10 @@
                 <h3><span class="step-icon">😋</span> Stage 4: Enjoying</h3>
                 <h4>The Perfect Moment:</h4>
                 <ul>
-                    <li>Cool completely before decorating or storing</li>
-                    <li>Perfect canvas for royal icing decorations</li>
-                    <li>Store in airtight container for up to 1 week</li>
-                    <li>Pro tip: Keep dough chilled while working for clean-cut edges</li>
+                    <li>Best enjoyed warm with gooey chocolate</li>
+                    <li>Store in airtight container for up to 5 days</li>
+                    <li>Perfect with cold milk or hot coffee</li>
+                    <li>Pro tip: Slightly underbake for softer, chewier cookies</li>
                 </ul>
             </div>
         </div>
